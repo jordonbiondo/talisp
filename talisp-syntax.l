@@ -9,6 +9,7 @@ void yyerror (char *s);
 %%
 "true" {return tsym;}
 "false" {return fsym;}
+(\")(.)*(\") {yylval.id = strdup(yytext);return astr;}
 [a-zA-Z\+\-\*/=%]+ {yylval.id = strdup(yytext);return symbol;}
 [1-9][0-9]* {yylval.num = atof(yytext);return number;}
 "(" {return lparen;}
